@@ -20,6 +20,10 @@ const menuData = [
         // hideInBreadcrumb: true,
         // hideInMenu: true,
       },
+      {
+        name: '拖拽页',
+        path: 'drag',
+      },
     ],
   },
   {

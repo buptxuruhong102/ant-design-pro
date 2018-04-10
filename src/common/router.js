@@ -86,6 +86,9 @@ export const getRouterData = app => {
       // name: '工作台',
       // authority: 'admin',
     },
+    '/dashboard/drag': {
+      component: dynamicWrapper(app, ['drag'], () => import('../routes/Drag/index')),
+    },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },
