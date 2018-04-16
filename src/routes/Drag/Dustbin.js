@@ -7,7 +7,8 @@ import { Row, Col,Input,Select,Button,Icon,Card,Tag   } from 'antd';
 const Option = Select.Option;
 
 const style = {
-	//height: '12rem',
+  minHeight:'500px',
+	height: '12rem',
 	width: '100%',
 	marginRight: '1.5rem',
 	marginBottom: '1.5rem',
@@ -57,7 +58,7 @@ export default class Dustbin extends Component {
     const { drag: {properties} } = this.props
     let properties2 = properties.map((item)=>{
       if(item.key == key){
-        return {value: obj.target.value, key: key};
+        return {key: key, value: obj.target.value};
       }
       return item;
     });
@@ -68,6 +69,7 @@ export default class Dustbin extends Component {
     });
   }
 
+
   handleEvent = (key)=>{
 	  let map = {};
     map[key] = true;
@@ -75,22 +77,12 @@ export default class Dustbin extends Component {
       showD: map,
       currentKey: key,
     });
-  }
-  renderProperties = ()=>{
-    const {currentKey} = this.state;
-    const { drag: {properties} } = this.props;
-    let currentProperties = properties.find((item)=>{
-      return currentKey == item.key;
+
+    this.props.dispatch({
+      type: 'drag/saveCommon',
+      payload: {currentKey: key},
     });
-    if(!currentProperties) currentProperties = {};
-	  let keys = Object.keys(currentProperties);
-    return (
-      keys.map((key)=>{
-        return <div key={key}>
-          <Input addonBefore={key} value={currentProperties[key]}  onChange={(obj)=> this.handleInputChange(obj,currentKey)}/>
-        </div>
-      })
-    )
+
   }
   onDelete = (key) =>{
     this.props.dispatch({
@@ -174,7 +166,6 @@ export default class Dustbin extends Component {
 			<div style={{ ...style, backgroundColor }}>
 				{isActive ? 'Release to drop' : 'Drag a box here'}
         {this.renderForm()}
-        {this.renderProperties()}
 			</div>,
 		)
 	}

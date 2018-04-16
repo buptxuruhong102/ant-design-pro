@@ -4,12 +4,20 @@ export default {
   state: {
     data: [],
     properties: [],
+    currentKey: "",
   },
 
   effects: {
   },
 
   reducers: {
+    saveCommon(state, action){
+      return{
+        ...state,
+        ...action.payload
+      };
+    },
+
     save(state, action) {
       let data = [...state.data];
       data.push(action.payload);

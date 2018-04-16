@@ -28,8 +28,7 @@ const boxSource = {
 		const item = monitor.getItem()
     //由DropTarget的drop返回
 		const dropResult = monitor.getDropResult()
-    console.log(dropResult);
-		if (dropResult) {
+    console.log(dropResult);		if (dropResult) {
 			//alert(`You dropped ${item.name} into ${dropResult.name}!`) // eslint-disable-line no-alert
 		}
 	},

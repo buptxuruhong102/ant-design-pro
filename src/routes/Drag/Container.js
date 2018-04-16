@@ -11,13 +11,13 @@ export default class Container extends Component {
 		return (
 			<DragDropContextProvider backend={HTML5Backend}>
 				<div>
+          <div style={{ overflow: 'hidden', clear: 'both' }}>
+            <Box name="input" />
+            <Box name="select" />
+            <Box name="button" />
+          </div>
 					<div style={{ overflow: 'hidden', clear: 'both' }}>
 						<Dustbin/>
-					</div>
-					<div style={{ overflow: 'hidden', clear: 'both' }}>
-						<Box name="input" />
-						<Box name="select" />
-						<Box name="button" />
 					</div>
 				</div>
 			</DragDropContextProvider>
